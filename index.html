@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Celebration</title>
+    <title>지우 생일축하해</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -19,7 +19,6 @@
         #left-container,
         #right-container {
             width: 30%;
-            /* 크기를 더 작게 조절함 */
             height: 100%;
             overflow: hidden;
             perspective: 800px;
@@ -92,15 +91,10 @@
         function changeCake() {
             const leftCakeImage = document.getElementById('cake-image');
             const rightCakeImage = document.getElementById('cake-image-right');
-
-            // Use Unsplash random image API for a random cake image
             const randomImageUrl = "https://source.unsplash.com/600x800/?cake";
-
-            // Change the cake images
             leftCakeImage.src = randomImageUrl;
             rightCakeImage.src = randomImageUrl;
 
-            // 새로고침
             location.reload();
         }
     </script>
