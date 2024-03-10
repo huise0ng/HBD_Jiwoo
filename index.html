@@ -4,30 +4,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>친구 생일 축하</title>
+    <title>Birthday Celebration</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        #left-container,
+        #right-container {
+            width: 30%;
+            /* 크기를 더 작게 조절함 */
+            height: 100%;
+            overflow: hidden;
+            perspective: 800px;
+        }
+
+        #cake-image,
+        #cake-image-right {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease-in-out;
+            transform-style: preserve-3d;
+        }
+
+        #left-container {
+            transform: scaleX(-1);
+        }
+
+        #center-container {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        #birthday-message {
+            font-family: 'YesevaOne-Regular', cursive;
+            font-size: 48px;
+            color: #ff69b4;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: birthday-animation 5s linear infinite;
+        }
+
+        @keyframes birthday-animation {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        #change-cake-btn {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>친구 생일 축하 🎂</h1>
-        <button onclick="showLetter()">편지 보기 💌</button>
+    <div id="left-container">
+        <img id="cake-image" src="https://source.unsplash.com/600x800/?cake" alt="Cake">
     </div>
 
-    <div class="letter-container" id="letterContainer">
-        <h2>편지</h2>
-        <form id="letterForm">
-            <label for="name">이름:</label>
-            <input type="text" id="name" required>
-            <label for="content">내용:</label>
-            <textarea id="content" required></textarea>
-            <button type="submit">편지 쓰기</button>
-        </form>
+    <div id="center-container">
+        <div id="birthday-message">이지우 생일축하해</div>
+        <button id="change-cake-btn" onclick="changeCake()">케이크 변경하기</button>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-    <script src="app.js"></script>
+    <div id="right-container">
+        <img id="cake-image-right" src="https://source.unsplash.com/600x800/?cake" alt="Cake">
+    </div>
+
+    <script>
+        function changeCake() {
+            const leftCakeImage = document.getElementById('cake-image');
+            const rightCakeImage = document.getElementById('cake-image-right');
+
+            // Use Unsplash random image API for a random cake image
+            const randomImageUrl = "https://source.unsplash.com/600x800/?cake";
+
+            // Change the cake images
+            leftCakeImage.src = randomImageUrl;
+            rightCakeImage.src = randomImageUrl;
+
+            // 새로고침
+            location.reload();
+        }
+    </script>
 </body>
 
 </html>
